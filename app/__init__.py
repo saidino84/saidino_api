@@ -4,8 +4,9 @@ from flask import Flask, render_template,request,url_for,redirect,jsonify,sessio
 def create_app():
     app=Flask(__name__)
 
-    @app.route('/')
-    def index():
-        return 'Tudo bom'
+    app.add_url_rule('/', view_func=index)
 
     return app
+
+def index():
+        return 'Tudo bom'
