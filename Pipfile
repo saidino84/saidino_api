@@ -18,6 +18,8 @@ Jinja2 = "==2.11.2"
 MarkupSafe = "==1.1.1"
 SQLAlchemy = "==1.3.18"
 opencv-contrib-python = "*"
+pyzbar = "*"
+pillow = "*"
 
 [dev-packages]
 
