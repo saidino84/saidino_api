@@ -11,9 +11,10 @@ class User(db.Model):
     @staticmethod
     def from_json(json):
         return User(username=json['username'],email=json['email'],password=json['password'])
-
-
-
-
     def __repr__(self):
         return '<User %r>' % self.username
+
+class Comentario(db.Model):
+    id =db.Column(db.Integer,primary_key=True)
+    nome = db.Column(db.String(80),nullable=False)
+    commentario =db.Column(db.String(), nullable=False)
