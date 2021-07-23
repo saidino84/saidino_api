@@ -34,3 +34,26 @@ Connection URL:
    postgres://rlvawhxyajskth:1ae752d1119605d1d6d12e8724461d7eea12a5d9bae4d8c5ad8a77a6e32aa33a@ec2-34-194-14-176.compute-1.amazonaws.com:5432/d5t6ibvkjcp7gq
 
 ``
+
+
+# configurando o SQLALCHEMY_DATABASE_URI ao meu app
+```py
+app.config['SQLALCHEMY_DATABASE_URI']='postgres://rlvawhxyajskth:1ae752d1119605d1d6d12e8724461d7eea12a5d9bae4d8c5ad8a77a6e32aa33a@ec2-34-194-14-176.compute-1.amazonaws.com:5432/d5t6ibvkjcp7gq'
+
+```
+e depois
+```sh'
+flask db init
+flask db migrate
+ pode dar erro ao fazer as migracoes devido a falta de driver de python com postgres
+
+ faca pip/poetry install/add psycopg2-binary  [bynary ] em modo de desenvolvimento
+
+feito isso ja podes criar as migracoes do banco de dados  
+flask db migrate
+
+desde ja la nu link do seu database ja sera criada o banco de dados
+ >> flask db upgrade
+
+ psycopg2-binary 'e que vai se comunicar com seu database la nu amazon aws  e se for a fazer query enquanto estiver offline ele dara erro !!'
+```

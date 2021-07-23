@@ -1,5 +1,5 @@
 from flask import Blueprint,render_template,request,redirect,url_for,jsonify
-from app.models.admin import User
+from app.models.admin import User,Comentario
 from app.db import db
 
 
@@ -24,10 +24,16 @@ def add():
             db.session.commit()
             return redirect(url_for('users_bp.index')), 200
         except Exception as e:
-
             return jsonify({'Erro aso salval':str(e)})
-
         else:
             return jsonify({'sucess':'salvado com sucesso'})
     else:
         return render_template('add.html'), 200
+
+@users_bp.route('/comments',methods=['POST','GET'])
+def commentarios():
+    return render_template(
+    'coments.html',commets=Comentario.query.order_by(
+    Comentario.id).limit(20).all())
+
+ 

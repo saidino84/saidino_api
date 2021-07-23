@@ -13,9 +13,12 @@ appUrls = 'https://flaskchatbotmoz.herokuapp.com'
 
 def create_app():
     app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + \
-        os.path.join(os.path.dirname(__file__), 'dados.db')
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    'DEPRECATED USING SQLITE MIGRATE TO POSTGRL'
+    # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + \
+    #     os.path.join(os.path.dirname(__file__), 'dados.db')
+    # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+    app.config['SQLALCHEMY_DATABASE_URI']='postgresql://rlvawhxyajskth:1ae752d1119605d1d6d12e8724461d7eea12a5d9bae4d8c5ad8a77a6e32aa33a@ec2-34-194-14-176.compute-1.amazonaws.com:5432/d5t6ibvkjcp7gq'
 
     from app.db import init_db
     init_db(app)

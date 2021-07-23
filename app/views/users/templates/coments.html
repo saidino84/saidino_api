@@ -1,0 +1,47 @@
+{%extends 'base.html'%}
+
+
+{% block content %}
+<h3 color=#ffffff class="title-app">USERS COMENTARIOS</h3>
+
+
+
+</form>
+
+
+<form action="" method='post' class="container" style="padding-top:20px;">
+    <div class="row col-xs-10" >
+        <div class="col-md-4">
+            <label class="form-group" for='coment'>Seu Nome</label>
+            <input type="text" name="nome" id="nome" value="" placeholder="seu nome" class="form-control">
+        </div>
+        <div class="col-md-4">
+            <label class="form-group" for='coment'>Comentario</label>
+            <textarea name="comment" rows="8" cols="80" class="form-control"></textarea>
+    </div>
+    <br>
+
+    <div class="row col-xs-9">
+        <button type="submit" class="btn btn-primary" style="margin-left:15px; margin-top:20px;">Salvar</button>
+    </div>
+
+    </div>
+</form>
+
+<h1>Timeline de Eventos</h1>
+
+<<div class="terminal-timeline">
+  {% for comment in comments %}
+
+  <div class="terminal-card">
+    <header>
+     {{ comments.nome }} - {{comments.id}}
+    </header>
+    <<div class="">
+      {{comment.commentario}}
+
+    </div>
+  </div>
+
+</div>
+{% endblock %}
