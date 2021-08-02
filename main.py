@@ -6,6 +6,8 @@ import random
 from modulos import get_current_directory
 from flask_migrate import Migrate
 
+# from flask.ext.admin import Admin
+from app.admin import config_admin,AdminView
 
 
 appUrls = 'https://flaskchatbotmoz.herokuapp.com'
@@ -23,6 +25,9 @@ def create_app():
     from app.db import init_db
     init_db(app)
     Migrate(app,app.db)
+    config_admin(app)
+
+    app.admin.add_view(AdminView(name='Saidino'))
 
     from app.models.admin import User
     from app.views.users.bp_users import users_bp
