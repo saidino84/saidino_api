@@ -12,4 +12,4 @@ class ImageModel(db.Model):
     created_at =db.Column(db.DateTime,nullable=False, default=datetime.utcnow)
 
     def __repr__(self):
-        return f'Pic Name {self.name} Date:{self.data} created on {self.pic_date}'
+        return f'Pic Name {self.name}  {self.descricao} created on {self.pic_date}'
