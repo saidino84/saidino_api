@@ -6,7 +6,7 @@ import random
 from modulos import get_current_directory
 from flask_migrate import Migrate
 
-from flask_admin import Admin
+from flask_admin import Admin, BaseView,expose
 from flask_admin.contrib.sqla import ModelView
 # from flask.ext.admin import Admin
 # from app.admin import config_admin,AdminView
@@ -26,26 +26,27 @@ def create_app():
 
     from app.db import init_db
     init_db(app)
-    Migrate(app,app.db)
-    # config_admin(app)
-    admin=Admin(app)
 
 
-    app.admin.add_view(AdminView(name='Saidino'))
+
+
 
     from app.models.admin import User
     from app.views.users.bp_users import users_bp
     app.register_blueprint(users_bp, url_prefix='/users_page')
 
+    # TODO
+    Migrate(app,app.db)
+    # config_admin(app)
+    admin=Admin(app)
     admin.add_view(ModelView(User,app.db.session))
+
+
+
 
     @app.route("/", methods=['GET', 'POST'])
     def index():
 
-        # clie = User(username='admin', email='admin@example.com')
-        # db.session.add(admin)
-        # db.session.commit()
-        # print(algo)
         return render_template('index.html')
 
     routa2 = 'https://flaskchatbotmoz.herokuapp.com/bot'
