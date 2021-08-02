@@ -1,4 +1,4 @@
-from flask.ext.admin import Admin, BaseView,expose
+from flask_admin import Admin, BaseView,expose
 
 
 admin=Admin()

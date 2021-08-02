@@ -6,8 +6,10 @@ import random
 from modulos import get_current_directory
 from flask_migrate import Migrate
 
+from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
 # from flask.ext.admin import Admin
-from app.admin import config_admin,AdminView
+# from app.admin import config_admin,AdminView
 
 
 appUrls = 'https://flaskchatbotmoz.herokuapp.com'
@@ -25,13 +27,17 @@ def create_app():
     from app.db import init_db
     init_db(app)
     Migrate(app,app.db)
-    config_admin(app)
+    # config_admin(app)
+    admin=Admin(app)
+
 
     app.admin.add_view(AdminView(name='Saidino'))
 
     from app.models.admin import User
     from app.views.users.bp_users import users_bp
     app.register_blueprint(users_bp, url_prefix='/users_page')
+
+    admin.add_view(ModelView(User,app.db.session))
 
     @app.route("/", methods=['GET', 'POST'])
     def index():
