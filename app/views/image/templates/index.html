@@ -1,0 +1,17 @@
+<!-- Basic Sample to other HTML Pages -->
+{% extends 'base.html'%}
+<!-- MACROS Imports -->
+{% from 'macro.html' import flash %}
+<!-- Title -->
+{% block title %} Uploaded Images {%endblock%}
+
+<!-- Jumbo Header -->
+{% block content %}
+
+    <h1>Pictures Uploader</h1>
+
+    <!-- Flash -->
+    {{flash()}}
+{% endblock%}
+
+<!-- Jumbo Text -->

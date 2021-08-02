@@ -1,0 +1,34 @@
+{% extends 'base.html'%}
+<!-- MACROS Imports -->
+{% from 'macro.html' import flash %}
+<!-- Title -->
+{% block title %} Image Uploader{%endblock%}
+
+<!-- Jumbo Header -->
+{% block content %}
+
+    <h1>Pictures Uploader</h1>
+
+    <!-- Flash -->
+    {{flash()}}
+ }
+
+    <form method="POST" action="/image_api/upload" enctype="multipart/form-data">
+        <!-- File Upload-->
+        <div class="form-group">
+            <label for="inputFile">Buscque A image</label>
+            <input class="form-control-file" type="file" name="inputFile">
+        </div>
+
+
+
+        <!-- Text -->
+        <div class="form-group">
+            <label for="text">Escreva a descricao (opcional)</label>
+            <textarea class="form-control" name="descricao" id="text" rows="5" placeholder="Add a Description"></textarea>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}

@@ -35,11 +35,18 @@ def create_app():
     from app.views.users.bp_users import users_bp
     app.register_blueprint(users_bp, url_prefix='/users_page')
 
+    from app.models.image import ImageModel
+    from app.views.image.bp_image import image_pb
+    app.register_blueprint(image_pb,url_prefix='/image_api')
+
     # TODO
     Migrate(app,app.db)
     # config_admin(app)
+
+    # registando todos os modelos necessarios para o meu gerenciador de Admin
     admin=Admin(app)
     admin.add_view(ModelView(User,app.db.session))
+    admin.add_view(ModelView(ImageModel,app.db.session))
 
 
 
