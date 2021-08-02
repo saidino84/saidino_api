@@ -22,14 +22,16 @@ def index():
     print('Are at index of images api')
     if pics:
         all_pics = pics
-        if request.method == POST:
+        if request.method == 'POST':
              flash('UPLOAD SUCESSFULL !')
              return redirect(url_for('upload'))
         return render_template('index.html',all_pic=all_pics)
     else:
         return render_template('upload.html')
 
-
+@image_pb.route('/create',methods=['POST','GET'])
+def create():
+    return render_template('upload.html')
 @image_pb.route('/upload',methods=['POST'])
 def upload():
     # pegando os dados digitados do formulario
@@ -56,7 +58,7 @@ def upload():
 
     new_file=ImageModel(filename=filename,descricao=descricao,rendered_data=render_file,data=data)
     filename=new_file.filename.split('.')[0]
-    type=new_file.filename.split('.')[1]
+    type=new_file.filename.split('.')[-1]
     description=new_file.descricao
     file_data=new_file.data
     file_render=new_file.rendered_data

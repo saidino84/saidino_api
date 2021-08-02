@@ -12,11 +12,22 @@
 {{flash()}}
 
 
+{% if file_type.endswith('mp3') %}
+<div style='height:200;color:#c2c2c2c2;'>
+  </div>
 
+  <h1>Now you play audio</h1>
+<audio src="data:;base64,{{file_render}}">
+  Your browser does not support the
+           <code>audio</code> element.
+
+</audio>
+
+{%else%}
 <div class="d-flex justify-content-center">
   <div class="card" style='width:50%;'>
     <!-- Render picture -->
-    <image class="card-img-top" scr='data:;base64,{{file_render}}' alt='NAO FOI POSSIVER VISUALIZAR A IMAGE'>
+    <image class="card-img-top" src='data:;base64,{{file_render}}' alt='NAO FOI POSSIVER VISUALIZAR A IMAGE'>
       <div class="card-body">
         <h2>
           <a href=" ">{{filename|capitalize}}</a>
@@ -31,4 +42,5 @@
 
 
 </div>
+{% endif %}
 {% endblock%}
