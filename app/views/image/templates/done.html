@@ -1,4 +1,4 @@
-% extends 'base.html'%}
+{% extends 'base.html'%}
 <!-- MACROS Imports -->
 {% from 'macro.html' import flash %}
 
@@ -19,7 +19,7 @@
     <image class="card-img-top" scr='data:;base64,{{file_render}}' alt='NAO FOI POSSIVER VISUALIZAR A IMAGE'>
       <div class="card-body">
         <h2>
-          <a href="{{url_for('get_image',image_id=file_id)}}">{{filename|capitalize}}</a>
+          <a href=" ">{{filename|capitalize}}</a>
           <span class="badge badge-secondary">{{file_description|capitalize}}</span>
           <span class="badge badge-secondary">Type : {{file_type}}</span>
           <span class="badge badge-secondary">created at : {{created}}</span>
