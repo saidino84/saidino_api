@@ -55,6 +55,12 @@ def create_app():
     def index():
 
         return render_template('index.html')
+    @app.route('/get_fruits',methods=['POST','GET'])
+    def get_files(): 
+    	file= url_for('static',filename='fruits.json')
+    
+    	# return Response(file,mimetype='json' ) 
+    	return app.send_static_file('fruits.json') 
 
     routa2 = 'https://flaskchatbotmoz.herokuapp.com/bot'
 
