@@ -61,6 +61,17 @@ def create_app():
     
     	# return Response(file,mimetype='json' ) 
     	return app.send_static_file('fruits.json') 
+    @app.route('/get_casa/cozinha/<page_id>',methods=['POST','GET'])
+    def get_files(page_id): 
+        file=''
+        if int(page_id)==1:
+    	    file= 'casa_cozinha_0.json'
+
+        else:
+            file= 'casa_cozinha_1.json'
+    
+    	# return Response(file,mimetype='json' ) 
+    	return app.send_static_file(file) 
 
     routa2 = 'https://flaskchatbotmoz.herokuapp.com/bot'
 
