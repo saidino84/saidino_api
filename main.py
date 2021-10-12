@@ -61,7 +61,7 @@ def create_app():
         file= url_for('static',filename='casa_cozinha_1.json')
 
     	# return Response(file,mimetype='json' )
-    	return app.send_static_file('fruits.json')
+    	return app.send_static_file('casa_cozinha_0.json')
     @app.route('/get_casa/cozinha/<page_id>',methods=['POST','GET'])
     def get_casa(page_id):
         file=''
