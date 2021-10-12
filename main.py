@@ -59,7 +59,7 @@ def create_app():
     def get_files():
     	# file= url_for('static',filename='fruits.json')
         file= url_for('static',filename='casa_cozinha_1.json')
-        return app.send_static_file('casa_cozinha_1.json')
+        return app.send_static_file('casa_cozinha_0.json')
 
     	# return Response(file,mimetype='json' )
     	# return app.send_static_file('casa_cozinha_0.json')
