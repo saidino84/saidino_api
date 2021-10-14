@@ -1,0 +1,23 @@
+{
+    "product":[],
+    "Frutas":[
+        {
+            "name":"maca",
+            "image_uri":"https://www.url/image.png"
+        },
+        {
+            "name":"pera",
+            "image_uri":"https://www.url/image.png"
+        },
+        [
+            {
+                "name":"maca",
+                "image_uri":"https://www.url/image.png"
+            },
+            {
+                "name":"pera",
+                "image_uri":"https://www.url/image.png"
+            }
+        ]
+    ]
+}
