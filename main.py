@@ -10,6 +10,7 @@ from flask_admin import Admin, BaseView,expose
 from flask_admin.contrib.sqla import ModelView
 # from flask.ext.admin import Admin
 # from app.admin import config_admin,AdminView
+from app.db.database import json_dbs
 
 
 appUrls = 'https://flaskchatbotmoz.herokuapp.com'
@@ -59,7 +60,7 @@ def create_app():
     def get_files():
     	# file= url_for('static',filename='fruits.json')
         # file= url_for('static',filename='casa_cozinha_1.json')
-        return app.send_static_file('casa_cozinha_1.json')
+        return app.send_static_file('databases/fruits.json')
 
     	# return Response(file,mimetype='json' )
     	# return app.send_static_file('casa_cozinha_0.json')
@@ -72,6 +73,22 @@ def create_app():
         else:
             file= 'casa_cozinha_1.json'
         return app.send_static_file(file)
+
+    @app.route('/getproducts/<indice>',methods=['GET'])
+    def get_products_by_category(indice):
+        _db_path='databases'
+        fruits=_db_path+'/fruits.json',
+        elect=_db_path+'/casa_electronicos.json',
+        lavand=_db_path+'/casa_lavandaria.json',
+        try:
+            id=int(indice)
+            if(id >=len(json_dbs)):
+                return 'Numero Invalido'
+            else:
+                return app.send_static_file(json_dbs[id])
+        except  Exception as e:
+            # return 'NUMEROS APENAS'
+            return app.send_static_file('databases/fruits.json')
 
     routa2 = 'https://flaskchatbotmoz.herokuapp.com/bot'
 
