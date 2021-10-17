@@ -10,7 +10,7 @@ from flask_admin import Admin, BaseView,expose
 from flask_admin.contrib.sqla import ModelView
 # from flask.ext.admin import Admin
 # from app.admin import config_admin,AdminView
-from app.db.database import json_dbs
+from app.db.database import json_dbs,json_mercearia
 
 
 appUrls = 'https://flaskchatbotmoz.herokuapp.com'
@@ -74,6 +74,9 @@ def create_app():
             file= 'casa_cozinha_1.json'
         return app.send_static_file(file)
 
+
+
+
     @app.route('/getproducts/<indice>',methods=['GET'])
     def get_products_by_category(indice):
         _db_path='databases'
@@ -89,6 +92,17 @@ def create_app():
         except  Exception as e:
             # return 'NUMEROS APENAS'
             return app.send_static_file('databases/fruits.json')
+    @app.route('/getmercearia/<index>',methods=['GET','POST'])
+    def get_mercearia(index):
+        _db_path='databases/17-10-2021/'
+        talho=_db_path+'talho.json'
+        try:
+            id=int(index)
+            if(id>=len(json_mercearia)):
+                return jsonify({'response':200,'error':'digite apenas numeros'})
+            return app.send_static_file(json_mercearia[id])
+        except  Exception as e:
+            return app.send_static_file(_db_path+'merc_arroz.json')
 
     routa2 = 'https://flaskchatbotmoz.herokuapp.com/bot'
 
