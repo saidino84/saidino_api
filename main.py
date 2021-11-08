@@ -13,6 +13,7 @@ from flask_admin.contrib.sqla import ModelView
 from app.db.database import json_dbs,json_mercearia
 
 
+
 appUrls = 'https://flaskchatbotmoz.herokuapp.com'
 
 
@@ -26,6 +27,7 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI']='postgresql://rlvawhxyajskth:1ae752d1119605d1d6d12e8724461d7eea12a5d9bae4d8c5ad8a77a6e32aa33a@ec2-34-194-14-176.compute-1.amazonaws.com:5432/d5t6ibvkjcp7gq'
 
     from app.db import init_db
+
     init_db(app)
 
 
@@ -36,9 +38,14 @@ def create_app():
     from app.views.users.bp_users import users_bp
     app.register_blueprint(users_bp, url_prefix='/users_page')
 
+
     from app.models.image import ImageModel
     from app.views.image.bp_image import image_pb
     app.register_blueprint(image_pb,url_prefix='/image_api')
+
+
+    from app.api.notification import notificat_bp_spar
+    app.register_blueprint(notificat_bp_spar,url_prefix='/spar')
 
     # TODO
     Migrate(app,app.db)
