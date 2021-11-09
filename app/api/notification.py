@@ -30,7 +30,7 @@ def postproduct():
             fcm_uri='https://fcm.googleapis.com/fcm/send'
             response=rq.post(fcm_uri,headers=headers,data=json.dumps(data))
         except  Exception as e:
-            return "verifique os dados , pk eles sao invalidos $e"
+            return "verifique os dados , pk eles sao invalidos {e}"
 
         return jsonify({"code":200,'status':'done'}),200
     else:
