@@ -32,6 +32,6 @@ def postproduct():
         except  Exception as e:
             return f"verifique os dados , pk eles sao invalidos {e}"
 
-        return jsonify({"code":200,'status':'done',"message":str(request.json['notification']['message']}),200
+        return jsonify({"code":200,'status':'done',"message":"received"}),200
     else:
         return 'your need to upload some things '
