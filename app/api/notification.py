@@ -9,19 +9,21 @@ def postproduct():
     # firebase project Server key
     print(request.data)
     if request.method=='POST':
+        print(request.json)
         try:
             data={
             'to':str(request.json['to']),
             'notification':{
-            'message':str(request.json['notification']['message']),
-            'title':str(request.json['notification']['title']),
-            'image':str(request.json['notification']['image_url'])
+            'body':str(request.json['body']),
+            'title':str(request.json['title']),
+            'image':str(request.json['image'])
             },
-            "data":{
-                "body":str(request.json['notification']['message']),
-                "title":str(request.json['notification']['title']),
-                "image":str(request.json['notification']['image_url'])
-            }}
+            # "data":{
+            #     "body":str(request.json['notification']['message']),
+            #     "title":str(request.json['notification']['title']),
+            #     "image":str(request.json['notification']['image_url'])
+            # },
+            }
             auth='key=AAAAT7I801w:APA91bFyk0q5leLPRR8YtKy3Q1s1wA38IcLdhZbkXF3ysCY7HdwOZ2IJEMQoaO8t5zKTwE_A8hockdmrL1FgkKkbqfK6FX4eCP5R7o1XLliD-e3OYFY1aruXPxac9rc_x6Dr6ly17nER'
 
             headers ={
@@ -30,8 +32,8 @@ def postproduct():
             fcm_uri='https://fcm.googleapis.com/fcm/send'
             response=rq.post(fcm_uri,headers=headers,data=json.dumps(data))
         except  Exception as e:
-            return f"verifique os dados , pk eles sao invalidos {e}"
+            return jsonify({"estatus":"falhou a enviar","message":f"verifique os dados , pk eles sao invalidos {e}","code":response.status_code},203
 
-        return jsonify({"code":200,'status':'done',"message":"received"}),200
+        return jsonify({"code":200,'status':'sucessfuly',"message":"received"}),200
     else:
         return 'your need to upload some things '
