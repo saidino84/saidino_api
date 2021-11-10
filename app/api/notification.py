@@ -17,12 +17,8 @@ def postproduct():
             'body':str(request.json['body']),
             'title':str(request.json['title']),
             'image':str(request.json['image'])
-            },
-            # "data":{
-            #     "body":str(request.json['notification']['message']),
-            #     "title":str(request.json['notification']['title']),
-            #     "image":str(request.json['notification']['image_url'])
-            # },
+            }
+            
             }
             auth='key=AAAAT7I801w:APA91bFyk0q5leLPRR8YtKy3Q1s1wA38IcLdhZbkXF3ysCY7HdwOZ2IJEMQoaO8t5zKTwE_A8hockdmrL1FgkKkbqfK6FX4eCP5R7o1XLliD-e3OYFY1aruXPxac9rc_x6Dr6ly17nER'
 
@@ -32,7 +28,7 @@ def postproduct():
             fcm_uri='https://fcm.googleapis.com/fcm/send'
             response=rq.post(fcm_uri,headers=headers,data=json.dumps(data))
         except  Exception as e:
-            return jsonify({"estatus":"falhou a enviar","message":f"verifique os dados , pk eles sao invalidos {e}","code":response.status_code},203
+            return jsonify({"estatus":"falhou a enviar","message":f"verifique os dados , pk eles sao invalidos {e}","code":300},),203
 
         return jsonify({"code":200,'status':'sucessfuly',"message":"received"}),200
     else:
