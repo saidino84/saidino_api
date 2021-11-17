@@ -47,6 +47,10 @@ def create_app():
     from app.api.notification import notificat_bp_spar
     app.register_blueprint(notificat_bp_spar,url_prefix='/spar')
 
+
+    from app.api.scrapper import scraper
+    app.register_blueprint(scraper,url_prefix='/scraper')
+
     # TODO
     Migrate(app,app.db)
     # config_admin(app)

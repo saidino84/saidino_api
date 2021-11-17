@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POST YOUR LINK </title>
+</head>
+<body>
+
+    <form action="/scraper/scrap" method="post">
+    <h2>Insira o link</h2>
+    <input type="text" name="uri" value='https://vipspar.com/product-category/spar/'/>
+
+    <input type="submit"/>
+    </form>
+    <ol>
+
+        {%for title in titles %}
+        <li><h4>{{title}}</h4></li>
+        {%endfor%}
+
+
+
+
+    </ol>
+</body>
+</html>
